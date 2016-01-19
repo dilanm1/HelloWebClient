@@ -27,14 +27,14 @@ namespace HelloWebClient
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (conn.State == ConnectionState.Closed)
-            //{
-            //    conn.Open();
-            //}
-            //if (!Page.IsPostBack)
-            //{
-            //   BindData();
-            //}
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            if (!Page.IsPostBack)
+            {
+                BindData();
+            }
         }
         void BindData()
         {
@@ -78,7 +78,7 @@ namespace HelloWebClient
             Label1.Text = client.ProcessDataAdd(TextBox1.Text, TextBox2.Text, TextBox3.Text, TextBox4.Text, TextBox5.Text, TextBox6.Text, url);
 
             Label8.Text = url;
-         //   BindData();
+            BindData();
          
         }
 
