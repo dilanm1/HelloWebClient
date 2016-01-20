@@ -15,8 +15,8 @@ namespace HelloWebClient
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-         string connectionString = ConfigurationManager.ConnectionStrings["Genius_ConnectionString"].ConnectionString;
-         SqlConnection conn = new SqlConnection( ConfigurationManager.ConnectionStrings["Genius_ConnectionString"].ConnectionString);
+         //string connectionString = ConfigurationManager.ConnectionStrings["Genius_ConnectionString"].ConnectionString;
+         //SqlConnection conn = new SqlConnection( ConfigurationManager.ConnectionStrings["Genius_ConnectionString"].ConnectionString);
        
       //  string url = HttpContext.Current.Request.Url.Host;
          string url = HttpContext.Current.Request.Url.AbsoluteUri;
@@ -43,14 +43,14 @@ namespace HelloWebClient
 
 
                 //  conn.Open();
-                SqlCommand comm = new SqlCommand("select WebLeadID,Planid,AccountRef,Firstname,Surname,Email,Tel1,DebtLevel,MonthlyPayment,website from cic_HBwebleads Order By WebLeadID DESC ", conn);
-                SqlDataAdapter adp = new SqlDataAdapter(comm);
-                DataSet ds = new DataSet();
-                adp.Fill(ds);
-                grvCustomers.DataSource = ds;
-                grvCustomers.DataBind();
-                comm.Connection.Close();
-                comm.Connection.Dispose();
+                //SqlCommand comm = new SqlCommand("select WebLeadID,Planid,AccountRef,Firstname,Surname,Email,Tel1,DebtLevel,MonthlyPayment,website from cic_HBwebleads Order By WebLeadID DESC ", conn);
+                //SqlDataAdapter adp = new SqlDataAdapter(comm);
+                //DataSet ds = new DataSet();
+                //adp.Fill(ds);
+                //grvCustomers.DataSource = ds;
+                //grvCustomers.DataBind();
+                //comm.Connection.Close();
+                //comm.Connection.Dispose();
 
 
             }
@@ -61,7 +61,7 @@ namespace HelloWebClient
             finally
             {
                 //close the database connection
-                conn.Close();
+               // conn.Close();
             }
 
         }
