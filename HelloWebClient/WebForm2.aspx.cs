@@ -13,24 +13,13 @@ using System.Net.Mail;
 
 namespace HelloWebClient
 {
-
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class WebForm2 : System.Web.UI.Page
     {
+
         string connectionString = ConfigurationManager.ConnectionStrings["Genius_ConnectionString"].ConnectionString;
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Genius_ConnectionString"].ConnectionString);
-       
-      //  string url = HttpContext.Current.Request.Url.Host;
-       // string url = HttpContext.Current.Request.Url.AbsoluteUri;
-
-        string url = "http://debtfree.com";
-
-
-       // string url = "debtfree.local";
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
-         
             if (conn.State == ConnectionState.Closed)
             {
                 conn.Open();
@@ -60,7 +49,7 @@ namespace HelloWebClient
             }
             catch (Exception ex)
             {
-                ShowMessage(ex.Message);
+                //ShowMessage(ex.Message);
             }
             finally
             {
@@ -69,38 +58,10 @@ namespace HelloWebClient
             }
 
         }
-        void ShowMessage(string msg)
-        {
-            ClientScript.RegisterStartupScript(Page.GetType(), "validation", "<script language='javascript'>alert('" + msg + "');</script>");
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            //HelloService.HelloServiceClient cl = new HelloService.HelloServiceClient("BasicHttpBinding_IHelloService");
-            //cl.UrlIsValid(url);    
-
-         
-
-            HelloService.HelloServiceClient client = new HelloService.HelloServiceClient("BasicHttpBinding_IHelloService");
-            Label1.Text = client.ProcessDataAdd(TextBox1.Text, TextBox2.Text, TextBox3.Text, TextBox4.Text, TextBox5.Text, TextBox6.Text, url);
-
-            Label8.Text = url;
-            BindData();
-         
-        }
-
-        //protected void grvCustomers_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        //{
-        //    grvCustomers.PageIndex = e.NewPageIndex;
-        //    BindData();
-        //}
-
+      
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
         }
-
-       
-     
     }
 }
